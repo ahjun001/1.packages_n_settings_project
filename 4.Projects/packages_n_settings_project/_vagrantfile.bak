@@ -1,0 +1,22 @@
+# Vagrantfile
+# frozen_string_literal: true
+
+Vagrant.configure('2') do |config|
+  config vm.box = 'generic/fedora38'
+  config.vm.hostname = 'fedora38_pj-VM'
+  config.vm.network 'private_network', type: 'dhcp'
+  config.vm.network 'public_network'
+
+  config.vm.synced_folder '/opt', '/vagrant', type: 'rsync'
+
+  config.vm.provider :libvirt do |libvirt|
+    domain.cpus = 2
+    domain.memory = 1024
+    # domain.driver = "qemu"
+  end
+
+  #   config.vm.provision 'ansible' do |ansible|
+  #     ansible.playbook = 'playbook.yml'
+  #     ansible.compatibility_mode = '2.0'
+  #  end
+end

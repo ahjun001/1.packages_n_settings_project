@@ -1,4 +1,4 @@
-= Video quick build project
+= After distro install, provision packages and settings
 :backend: asciidoctor
 :github-flavored:  // enables GitHub-specific features like tables, task lists, and fenced code blocks
 ifndef::env-github[:icons: font]
@@ -17,9 +17,38 @@ endif::[]
 
 == Summary
 
+This project is to create a vagrant-ansible and possibly molecule piece of code to make sure that either in bare metal or in a VM, the packages used are installed in a sufficiently new version (like 0.9.0 or greater for Neovim) , that bookmarks and passwords for browsers can be restored, that my thunderbird email is set up.  
+
+To create a Vagrant-Ansible setup with possible integration of Molecule, you would need to follow a learning path in Vagrant, Ansible, and Molecule. Here's a suggested approach:
+
+1. Vagrant:
+   - Start by understanding the basics of Vagrant, which is a tool for managing virtual environments.
+   - Learn how to define VM configurations using Vagrantfiles, specifying the base image, network settings, and provisioning instructions.
+   - Explore Vagrant's commands and features for managing VMs, such as starting, stopping, and provisioning.
+
+2. Ansible:
+   - Begin by getting familiar with Ansible, an automation tool for configuration management and orchestration.
+   - Learn about Ansible playbooks, which define the desired state of your systems and the tasks to be executed.
+   - Understand Ansible's modules, which provide the building blocks for configuring systems, installing packages, managing files, etc.
+   - Practice writing Ansible playbooks to install and configure the packages you need, such as Neovim, browsers, and Thunderbird.
+
+3. Molecule (optional):
+   - If you decide to use Molecule for testing your Ansible roles, start by understanding its purpose as a testing framework.
+   - Learn how to define Molecule scenarios that specify the test environment and the role to be tested.
+   - Explore Molecule's integration with different drivers, such as Vagrant and Docker, to create test instances.
+   - Practice writing Molecule tests to validate the functionality of your Ansible roles, including verifying package versions and configuring browsers and Thunderbird.
+
+Throughout your learning path, it's recommended to work on small, incremental projects to gradually build your knowledge and skills. Start with simple tasks and gradually increase the complexity as you become more comfortable with Vagrant, Ansible, and Molecule.
+
+Remember to refer to the official documentation and online tutorials for each tool, as they provide detailed explanations and examples to guide you.
 
 == Workflow
 
+On a LMint machine:
+
+. install a Fedora and a LMint VM
+. create roles to check that each package and package settings will be saved and installed
+. get settings on a usb and in the cloud
 
 == Technically
 

@@ -1,0 +1,16 @@
+# Vagrantfile
+# frozen_string_literal: true
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'generic/fedora38'
+  config.vm.box_check_update = false
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = 'kvm'
+    libvirt.cpus = 2
+    libvirt.memory = 1024
+  end
+end
