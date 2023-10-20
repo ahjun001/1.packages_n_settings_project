@@ -1,0 +1,37 @@
+Creating a KVM/Qemu VM with the libvirt provider involves several steps. Here's a general outline of the process:
+
+1. **Install Necessary Packages**: You'll need to install libvirt, qemu-kvm, and virt-manager. On a Debian-based system, you can use the following command:
+
+```bash
+sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+```
+
+2. **Start and Enable libvirtd**: Use systemctl to start the libvirtd daemon and enable it to start at boot:
+
+```bash
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+```
+
+3. **Create a New VM**: You can use the `virt-install` command-line tool or the `virt-manager` GUI to create a new VM. Here's an example using `virt-install`:
+
+```bash
+sudo virt-install \
+--name my-vm \
+--ram 4096 \
+--disk path=/var/lib/libvirt/images/my-vm.img,size=20 \
+--vcpus 2 \
+--os-type linux \
+--os-variant ubuntu20.04 \
+--network bridge=virbr0 \
+--graphics none \
+--console pty,target_type=serial \
+--location 'http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/' \
+--extra-args 'console=ttyS0,115200n8 serial'
+```
+
+This command creates a new VM with 4GB of RAM, 2 CPU cores, and a 20GB disk image. It installs Ubuntu 20.04 using the network installer.
+
+4. **Access the VM**: You can access your VM's console with the `virsh console my-vm` command.
+
+Please note that these are general steps and might vary slightly depending on your specific requirements and the distro you are using.

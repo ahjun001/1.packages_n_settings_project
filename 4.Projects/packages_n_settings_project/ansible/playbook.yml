@@ -1,6 +1,6 @@
 ---
 # playbook.yml
-- hosts: default
+- hosts: all
   become: true
   become_method: sudo
   roles:
@@ -8,3 +8,4 @@
     - "config dnf"
     - "update all packages"
     - "install KDE Plasma"
+    - "boot in KDE"
